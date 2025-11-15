@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  api:
+    command: npm run dev # Use nodemon for hot-reload
+    volumes:
+      - ./:/app # Mount local code
+      - /app/node_modules # Don't overwrite node_modules
