@@ -25,7 +25,7 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
-    
+
     steps:
     - name: Check out code
       uses: actions/checkout@v4
@@ -51,7 +51,7 @@ jobs:
         POSTGRES_DB: test_db
         DB_HOST: localhost # Runs on the host
         DB_PORT: 5432
-        
+
   # --- 2. Build Stage (DOCKER) ---
   build:
     name: Build and Scan Image
@@ -96,15 +96,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: build # Depends on build and scan
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    
+
     permissions:
       contents: read
       packages: write # Grant permission to push to GHCR
-      
+
     steps:
     - name: Check out code
       uses: actions/checkout@v4
-    
+
     - name: Generate image tags
       id: meta
       run: |
